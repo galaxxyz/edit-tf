@@ -1,3 +1,13 @@
+Quick links:
+* [edit.tf development blog](https://www.rawles.net/teletext/edit-tf/).
+* Free teletext editors:
+[edit.tf](http://edit.tf),
+[zxnet](https://zxnet.co.uk/teletext/editor/),
+[wxTED](https://github.com/peterkvt80/wxted).
+* [How-to guide](http://edit.tf/doc/handy-howto.pdf),
+[how-to video](https://www.youtube.com/watch?v=S5WNmw9AHWQ),
+[example frames](https://www.rawles.net/teletext/examples/).
+
 # The edit.tf teletext editor
 
 This is a teletext editor implemented in JavaScript, so that people now 
@@ -11,12 +21,12 @@ or preparing viewdata frames.
 Most of the functionality of the editor is accessed through key 
 sequences beginning with the escape key. They are summarised in a table 
 to the left of the the editor. Alternatively, the table can be viewed in 
-the editor by entering the key sequence `ESC-?`.
+the editor by entering the key sequence `Esc ?`.
 
 Pressing the escape key takes you into command mode, in which the status 
 bar is coloured yellow, and then typing a (possibly shifted) letter will 
 insert a control character or perform some other function. The status 
-bar can also be used to view teletext metadata. The key sequence `ESC-9` 
+bar can also be used to view teletext metadata. The key sequence `Esc 9` 
 toggles this.
 
 Everything you need to run the editor is in two files. `teletext-editor.js`
@@ -49,14 +59,14 @@ appears at bit positions _280r+7c_ to _280r+7c+6_ inclusive, the most
 significant bit appearing first. There are therefore two bits at the
 end of the encoding which are not used.
 
-The key combination `ESC-E` will pop up a box allowing you to export the 
+The key combination `Esc E` will pop up a box allowing you to export the 
 frame. It will appear as a data URI. There are three formats at present. 
 Two are raw and differ in how they deal with character codes in the 
 range 0x00 to 0x1f. One raw format leaves them untouched, the other sets 
 the high bit so they appear as characters in the range 0x80 to 0x9f when 
 exported. The other format is 8-bit TTI, designed for use with wxTED, by 
 @peterkvt80 - Peter Kwan. This includes metadata which can be viewed 
-with `ESC-9` but which unfortunately cannot yet be edited.
+with `Esc 9` but which unfortunately cannot yet be edited.
 
 Alternatively, a script, `url2raw.pl`, in the `tools/` directory, is 
 provided to assist with conversion on the command line. Supply an editor 
@@ -121,7 +131,7 @@ follows.
 
     }
     </script>
-    <title>edit-tf</title>
+    <title>edit.tf</title>
     </head>
     
     <!-- The editor canvas is set up by a call to the function above. -->
@@ -154,7 +164,7 @@ way, please comment on issue #3 so that everybody can suggest ways for
 you to help.
 
 Another very useful way to help is to read
-[the issues for which opinions are currently sought](https://github.com/rawles/edit-tf/labels/opinions%20sought) and contribute to the discussion. The
+[the issues for which opinions are currently sought](https://github.com/rawles/edit.tf/labels/opinions%20sought) and contribute to the discussion. The
 more opinions we have on how we can develop the editor, the more likely we're
 going to make it into a useful tool for everyone.
 
@@ -167,7 +177,7 @@ going to make it into a useful tool for everyone.
   first eight characters of the first line are never transmitted, instead
   being used to encode the page metadata. The television usually displays
   the page number here instead. A reminder of these restrictions is given
-  when the grid is enabled (with `ESC-X`). Cells to avoid are not included
+  when the grid is enabled (with `Esc X`). Cells to avoid are not included
   in the grid shown.
 * Another application of the editor is for designing BBC Micro frames.
   There are subtle differences in the way each system displays the frame, 
@@ -178,14 +188,14 @@ going to make it into a useful tool for everyone.
   characters having different colours, or even different characters
   entirely, may be achieved. This editor does not yet display such effects.
 * The editor has a cut and paste function. Firstly, you must define the 
-  rectangle you want to cut. After pressing `ESC`, the arrow keys can be 
+  rectangle you want to cut. After pressing `Esc`, the arrow keys can be 
   used to define the rectangle. During this process, the editor stays in
-  escape mode. Lowercase x cuts the rectangle, which can be pasted with 
-  `ESC-v`.
-* You can add an image to the editing window to trace over with `ESC-=`. The
+  escape mode. Lowercase x cuts the rectangle and lowercase c copies it.
+  It can then be pasted with `Esc v`.
+* You can add an image to the editing window to trace over with `Esc =`. The
   editor prompts you for a URL. The image at this URL will appear beneath
   the editor window, with the editor itself at half opacity.
-  Pressing `ESC-=` again will make the image disappear again. This is
+  Pressing `Esc =` again will make the image disappear again. This is
   demonstrated in 
   [this video by Steve Horsley](https://www.youtube.com/watch?v=CA8U4YW5JZM).
   If you press `=` while defining a rectangle, the image will appear 
@@ -223,20 +233,12 @@ The editor has been used for various events and systems:
 * [Adam Dawes](http://www.adamdawes.com/) adapted this code to make 
   [a cool browser interface](http://www.uniquecodeanddata.co.uk/teletext76/bbc2-19830129/) for Jason's recovered frames, which enables you to select pages by 
   page number and step through subpages.
-* An easy way to share frames is to tweet your editor URLs to us at
-  [@edit_tf](https://twitter.com/edit_tf) and we'll convert it to
-  an image and retweet it. This allows other people to see how frames are  
-  constructed and learn from what you've done!
 * Heather Merrick uses the editor to prepare
   [Teletext News](https://teletextnews.com/). She describes the process in 
   [an article](https://medium.com/@heathermerrick/teletext-news-behind-the-scenes-372ca36ec179).
 * Mr Biffo, of [Digitiser 2000](http://www.digitiser2000.com/) and 
   [lots of other stuff besides](http://www.imdb.com/name/nm1044110/), 
   uses the editor for graphics on the Digitiser2000 site.
-  He also is producing funny, surreal teletext graphics
-  [on his Twitter feed](https://twitter.com/mrbiffo) for
-  anybody who donates £10 or more to the Kickstarter for the excellent 
-  forthcoming [Mr. Biffo's Found Footage](https://www.kickstarter.com/projects/1534877882/mr-biffos-found-footage).
 
 The editor has starred in the following videos:
 
@@ -251,7 +253,7 @@ The editor has starred in the following videos:
 
 ## Compatibility
 
-* The Windows-based teletext editor [wxTED](http://teastop.co.uk/teletext/wxted/) by Peter Kwan - @peterkvt80 - has 
+* The Windows-based teletext editor [wxTED](https://github.com/peterkvt80/wxted/releases) by Peter Kwan - @peterkvt80 - has 
   implemented import from, and export to, the URLs used in this editor.
   Peter has also produced a Raspberry Pi teletext editor and other cool 
   teletext technologies.
@@ -264,8 +266,14 @@ we keep them here.
 
 * [the original](http://edit.tf/#0:KJGCBgkYIGCRggYJGCBgkYIGCRggYJGCBgkYIGCRggYJGCAo5cOXDlw5cOXDlw5cOXDlw5cOXDlw5cOXDlw5cOXDlw5cOSnvd7_e93v973e_3vd7_e93v973e_3vd7_e93v973e_3vd7CHUBdA4WHixdYsLF1hZYsWLFixYsWLFixYsWGlixZkQIECAodQF9RT-eOf8_Pnz58-fPnz58-fPnz58-fN3___zxzV___yh1AW1FP5441Ohz6BAgQIECBAgQIECBAgQICzUp_PHNX___KHRpfUU_njjU6HPxUERBJNVEBZQgD1DMZAgLNSn88c1f__9AgQIECBAgQIECBAgQIECBAgQIECBAgQIECBAgQIECBAgQICh1AW1FP5441Ohj6BAgQIECBAgQIECBAgQIC7Up_PHNX___KHUBbUU_njjU6GP9MuzL0y-OiDLk09N_JAgLNSn88c1f__8odQFtRT-eONToc-gQIECBAgQIECBAgQIECAu1KfzxzV___yh00W1IEBYygUrFixYsWLDxdYWLrFhYusWLEyAp_PHNX___Kf____258-fPnz58-fPnz58-fPnz58-fPnz58-fPn5____8odQIECBAgQIECBAgQIECBAgQIECBAgQIECBAgQIECBAgQICh0koBUOWXnzDxacNA_BdN6Dtpy90GFBoy7OCDnj5Zcu5cgKHSygNB2bEGblh25UGTD0woNPNBp3IOmjKgq0pi5BU3oECAodDIEHPD2yoPO_ryQd9_LWsQYt-_Xtw8taDpoyoOGHPlXICh0koBQuufmgw7siDh12bEHLLx65efTmg75dmPftyoMPR0gKHQSBBo6dOHN0vX59PTR1xLse_av5Ye-zLzX5cmnot6ZkCAodLKA1Dll58w8WnDQU5EmNUW2g3Tegx7MuHkg6aNPNAgQICh0MgQZuWHblQYd2RBiy59O5Bj5ZcPTTuzoPO_ryQb--5CgKHUCBAgQIECBAgQIECBAgQIECBAgQIECBAgQIECBAgQIECAp3e93_d73f93vd_3e93_d73f93vd_3e93_d73f93vd_3e9ymZNmTZk2ZNmTZk2ZNmTZk2ZNmTZk2ZNmTZk2ZNmTZk2ZNmKIEShEgRKESBEoRIEShEgRKESBEoRIEShEgRKESBEoRIESg)
 * [2016-08-29: Steve Horsley](http://edit.tf/#0:QAoW_fr24eWtB00aeaDhhz5UHTeg54e2VB539eSDvv5a0CAo4cOHCAl4KKHDhw4cOHDhw4cOHDhw4cOHDhw4cOHDhw4cOCn79-JKH69IUXbnyZEq_fv379-_fv379-_fv379-_fv379-Kf__96T0f1hLwgI-P_Qor3________________________8ovXryWTwsXJyPj9____rAovXr169evXr169evXr169evXryvx4RwfPn7__fp1e____pSvz58-fPnz58-fPnz58-fPnz58KtyPj___r05Ph86Ed_9iVXL16_-vXr169ev___________8pwI736cns-f____1Ir_7wt__tUGr_q_6v5TgV__0Hz58KcCn_6wJrvvLf_____96sKfC39GhQav-Lnq_lN5X__Qf__8p_Kf_5NctJ7______rViwp_Lf_7X9__6v-r__QFf_9B_alFn8p__l9_sn6____9A-XrSn8t_QIP6D_q_6v5dYV__0H___Kfyn_-9J8PH_____y-zu_Kfy3_-1___-r_q__yqD__Qf2pTh_Kf_5P8vT4eH7ur28OHgp_Lf_7Vfv_6v6r__KoP_9B_alP_8p__k9_dmjVr163oyV_yn_hw4EfRThw4cOHDh04cOHDhw__yqxYkJq__zgR2vSfv-lKqFixIRalVCxYsWLFixYsWLFixYsKIECAv0Jo1__58_P05RAgQICOpCgB1IsyLUi2KiBAgQIECAogQF1X_-9WLMHxgUQIC6BAgItySAGgixJNSfSQIECBAgQICqwv4a7_5L99L__6rpw-fyf9p8KrFixYsWLFixYsWLFixYsKF_X_-yTkv78v__tWX___J_Wm8p8-fPnz58-fPnz58-fPnwvo_6v_9uS-F9rJfoaol-8mvRlPH___________________y65KuXryS5etLr169eUWLFixYvXr169evXr169evXr169evInSaQHQ5ZefNBFpw0CtBaB9N6DHsy4eSDpo080HPHyy5dyAidJpAdDll580EWnDQK0D8Hm38kHTRlQaMuzgg54-WXLuQICJ0ukDwuufmgw7siDll49cvPpzQd8uzHv25ciDD0dIECBAgInS6APo6dOHN0vX59PTR1xLse_av5Ye-zLzX5cmnot6ZkCA), featuring [Mr. Safety](https://www.youtube.com/watch?v=M5lhhFO3Qjw&t=29s).
+* [2017-01-27: Raquel Meyers](http://edit.tf/#0:QIECBAgQIECBAgQIECBAgQIECBAgQIECBAgQIECBAgQIECBAgQIECBAgQIECBAgQIECBAgQIECAi4Q4EyBAgQYEyBAgQIECBAgQIECBAgQIECBAgQIECBAgQEUDVBqQIECBBqQIECBAgLoECBAgQIMHDhgwYMHDggQIECBARQPfGrAsYPEmrAkQIECAugQIECBAw___-rVq1f_7VggQIEBFx19alXBL1ca1LBAgQIC6DUgQePPXf9______9_5fvlgg1EUCBAgQIEHDogQIMCBAgLoNSD1n58-PNX___3-Pjz5897DURQIECBAgQIGqBAg1IECAugRftWoigQF1KxYsWISKAvq1amxFA9YaMjToka6EDTUgQIC6BB_1aiOpRqaePnTQ1SNS-rVqakXHX1q4NWrjruTNdSBAgLoEG_VqI4tjd6r_p9294xL6tWpKRQNUCBAgQIECBA11IECAugQINeojq1Jd_D5wf6krUvq1IUBFApYB2TBi3QEXCFQgQIC6BAg1KuHDgwQIECBAg4cODrUgQIECBAgQIECBAgQIECBAgLoECBEuXr1-bJ8-fOmZcvXr0yBBg_f__RABZNcDJsgjZcS4ugQIECLf____vPnz8____-nQIECr___v0AGHl3dOWVBm38i6BBwcLFixYsWLFixYsWLFizJwQau3Pn-QIAMPft4demndnL4E2r___________________-DL23__-fggQAZGnn038vKwvv-umaNGjRo0aNGjRo0aNGjduf__6_8___0DDw7cXLTkz5S_13_7bPnTJ8-fPnz58-fPmZNg__8_7P__5_nRAgQIEAGrLL___bf9-fPnz58-PPOTJs-IfH9_5__fL_z___2qBAgQIECAvv__2v_OsWLFixZqcuXLv_9__-2___z5t___n_f-iBAgQIC_12_0tV69evXr161WmTJk2bPv__Xfn_9_v_OfN_foECBAgL_06DU1b8-fPnz58-fPnz56XLn___9t__P-_f_6dAgQIECADXioK8GdUQWZ9VCHlT5M5BVpoQMqfJnIKkiKgjValWlFQoAN0Po6dODpev6ZdmXpl8dFvDDy6eV3nDw578nldj37V4G2gQIECBAgQIECBAgQIECBAgQIECBAgQIECBAgQIECBAgQIECA)
 
-## Test frames 
+## Example frames 
+
+There is a growing [gallery of frames](https://www.rawles.net/teletext/examples/), intended as a starting point for new users.
+Clicking on any frame will cause it to load in the editor.
+
+### Test frames
 
 Frames to test the correct functionality of the editor appear below. Feel 
 free to edit this README with your own test frames, especially if they expose
